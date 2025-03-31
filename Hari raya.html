@@ -1,58 +1,79 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Hari Raya Idul Fitri</title>
+    <title>Romantic Message</title>
     <style>
         body {
-            text-align: center;
-            background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
-            color: white;
-            font-family: Arial, sans-serif;
-        }
-        .greeting {
-            font-size: 35px;
-            font-weight: bold;
-            margin-top: 20px;
-            animation: fadeIn 2s ease-in-out;
-        }
-        .subtext {
-            font-size: 20px;
-            margin-top: 10px;
-        }
-        .lantern {
-            position: absolute;
-            top: -100px;
-            animation: dropLantern 3s infinite alternate ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes dropLantern {
-            from { transform: translateY(0); }
-            to { transform: translateY(20px); }
-        }
-        .masjid-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 30px;
+            height: 100vh;
+            background-color: #ffe6e6;
+            font-family: Arial, sans-serif;
+            text-align: center;
         }
-        .masjid {
-            width: 300px;
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .message {
+            font-size: 18px;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        .heart {
+            font-size: 50px;
+            color: red;
+            opacity: 0;
+            transition: opacity 2s;
+        }
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <h1 class="greeting">Selamat Hari Raya Idul Fitri</h1>
-    <h2 class="subtext">1446 H / 2025 M</h2>
-    <p class="subtext">Taqabbalallahu minna wa minkum, shiyamana wa shiyamakum</p><div class="masjid-container">
-    <img class="masjid" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Great_Mosque_of_Central_Java.jpg/800px-Great_Mosque_of_Central_Java.jpg" alt="Masjid Indah">
-</div>
+    <div class="container">
+        <button class="btn" onclick="showMessage()">Click this</button>
+        <p class="message" id="message"></p>
+        <div class="heart" id="heart">❤️</div>
+    </div><script>
+    const messages = [
+        "Hello, you! There's something I want to tell you...",
+        "I may not be a poet...",
+        "But every word I write is about you.",
+        "Because you are my inspiration. ❤️"
+    ];
+    
+    let index = 0;
+    const messageElement = document.getElementById("message");
+    const heartElement = document.getElementById("heart");
 
-<img class="lantern" src="https://upload.wikimedia.org/wikipedia/commons/5/52/Lantern_Icon.svg" width="50" style="left: 20%;">
-<img class="lantern" src="https://upload.wikimedia.org/wikipedia/commons/5/52/Lantern_Icon.svg" width="50" style="left: 80%;">
+    function showMessage() {
+        if (index < messages.length) {
+            messageElement.textContent = messages[index];
+            messageElement.style.opacity = 1;
+            index++;
+            setTimeout(() => {
+                messageElement.style.opacity = 0;
+                setTimeout(showMessage, 1000);
+            }, 3000);
+        } else {
+            heartElement.style.opacity = 1;
+        }
+    }
+</script>
 
 </body>
 </html>
